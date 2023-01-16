@@ -15,7 +15,6 @@
     </head>
     <body>
         <div id="app">
-            <app></app>
             <board></board>
             <div id="db-export-btn">
                 <a href="{{ route('db_export') }}">Export DB</a>
