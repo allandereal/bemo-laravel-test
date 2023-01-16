@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('column_id')->nullable();
             $table->unsignedInteger('position');
             $table->timestamps();
@@ -28,7 +28,7 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->unique(['column_id', 'position']);
+            //$table->unique(['column_id', 'position']);
         });
     }
 
