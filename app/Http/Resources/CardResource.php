@@ -14,6 +14,14 @@ class CardResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'column_id' => $this->column_id,
+            'description' => $this->description,
+            'position' => $this->position,
+            'created_at' => $this->created_at,
+            'deleted_at' => $this->deleted_at
+        ];
     }
 }
