@@ -13,7 +13,7 @@ class StoreCardRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreCardRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'filled'],
+            'column_id' => ['required', 'filled'],
+            'description' => ['nullable'],
         ];
     }
 }
