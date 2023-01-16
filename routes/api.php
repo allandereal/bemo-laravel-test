@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('columns', ColumnController::class)->only(['index', 'store', 'destroy']);
-Route::resource('cards', CardController::class)->only(['index', 'store']);
 
-Route::post('cards/swap-positions', [CardController::class, 'swapPositions']);
+Route::controller(CardController::class)
+    ->prefix('cards')
+    ->group(function (){
+    Route::get('/', 'index')->name('cards.index')->middleware('api_auth');
+    Route::post('/','store')->name('cards.store');
+    Route::post('cards/swap-positions', 'swapPositions')->name('cards.swap-positions');
+});
