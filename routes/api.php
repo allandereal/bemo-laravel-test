@@ -22,5 +22,5 @@ Route::controller(CardController::class)
     ->group(function (){
     Route::get('/', 'index')->name('cards.index')->middleware('api_auth');
     Route::post('/','store')->name('cards.store');
-    Route::post('cards/swap-positions', 'swapPositions')->name('cards.swap-positions');
+    Route::post('/swap-positions', 'swapPositions')->name('cards.swap-positions');
 });
