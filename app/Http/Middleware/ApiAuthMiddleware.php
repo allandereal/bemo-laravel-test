@@ -19,6 +19,6 @@ class ApiAuthMiddleware
         if ($request->query('access_token') === config('auth.access_token')){
             return $next($request);
         }
-        return to_route('home');
+        return response('Unauthorized!', 401);
     }
 }
