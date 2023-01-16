@@ -25,7 +25,7 @@
 <script>
     import Card from '../views/card.vue'
     import axios from "axios";
-    import draggable from 'vuedraggable'
+    import Draggable from 'vuedraggable'
     import SingleElementForm from "./SingleElementForm.vue";
 
     export default {

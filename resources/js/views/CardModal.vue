@@ -4,10 +4,10 @@
         <SingleElementForm v-show="titleClicked" @on-cancel="toggleEditTitleClicked" @on-submit="updateCardTitle">
             <textarea class="form-inline__input--text-long" v-model="cardTitle" ></textarea>
         </SingleElementForm>
-        <div>
-            <h4>Description</h4>
-            <button v-show="hasDescription && !editDescriptionClicked" @click="editDescriptionClicked = true">edit</button>
-            <p v-show="!editDescriptionClicked" @click="editDescriptionClicked = true" class="">{{ card.description ? card.description : 'Add detailed description' }}</p>
+        <div class="modal__body">
+            <h4 class="modal__card--description-title">Description</h4>
+            <button class="modal__description--button-edit" v-show="hasDescription && !editDescriptionClicked" @click="editDescriptionClicked = true">Edit</button>
+            <p class="modal__body--details" v-show="!editDescriptionClicked" @click="editDescriptionClicked = true">{{ card.description ? card.description : 'Add detailed description' }}</p>
             <SingleElementForm v-show="editDescriptionClicked" @on-cancel="toggleEditDescriptionClicked" @on-submit="updateCardDescription">
                 <textarea class="form-inline__input--text-long" v-model="cardDescription" placeholder="Describe this card"></textarea>
             </SingleElementForm>
