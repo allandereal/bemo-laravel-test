@@ -2086,11 +2086,10 @@ __webpack_require__.r(__webpack_exports__);
     updateCardDescription: function updateCardDescription() {
       var _this = this;
       this.editDescriptionClicked = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/board-cards', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/cards/' + this.card.id, {
         id: this.card.id,
         description: this.cardDescription
       }).then(function (response) {
-        console.log(response);
         _this.card.description = _this.cardDescription;
       })["catch"](function (error) {
         return console.log(error);
@@ -2105,11 +2104,10 @@ __webpack_require__.r(__webpack_exports__);
     updateCardTitle: function updateCardTitle() {
       var _this2 = this;
       this.titleClicked = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/board-cards', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/cards/' + this.card.id, {
         id: this.card.id,
         title: this.cardTitle
       }).then(function (response) {
-        console.log(response);
         _this2.card.title = _this2.cardTitle;
       })["catch"](function (error) {
         return console.log(error);

@@ -34,12 +34,11 @@
         methods: {
             updateCardDescription(){
                 this.editDescriptionClicked = false;
-                axios.put('/api/board-cards', {
+                axios.put('/api/cards/'+this.card.id, {
                     id: this.card.id,
                     description: this.cardDescription
                 })
                     .then(response => {
-                        console.log(response);
                         this.card.description = this.cardDescription
                     })
                     .catch(error => (console.log(error)));
@@ -52,12 +51,11 @@
             },
             updateCardTitle(){
                 this.titleClicked = false;
-                axios.put('/api/board-cards', {
+                axios.put('/api/cards/'+this.card.id, {
                     id: this.card.id,
                     title: this.cardTitle
                 })
                     .then(response => {
-                        console.log(response);
                         this.card.title = this.cardTitle
                     })
                     .catch(error => (console.log(error)));
