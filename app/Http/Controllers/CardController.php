@@ -18,8 +18,25 @@ class CardController extends Controller
      */
     public function index(Request $request)
     {
-        //TODO: add filters
-        return CardResource::collection(Card::withTrashed()->get());
+        $date = $request->query('date');
+        $status = $request->query('status');
+
+        $cards = Card::query()
+            ->when($date, function ($query, $date){
+                $query->whereDate('created_at', $date);
+            })
+            ->when(blank($status), function ($query, $status){
+                $query->withTrashed();
+            }, function ($query) use ($status){
+                if ($status == 1){
+                    $query->withoutTrashed();
+                } elseif ($status == 0){
+                    $query->onlyTrashed();
+                }
+            })
+            ->get();
+
+        return CardResource::collection($cards);
     }
 
     /**
