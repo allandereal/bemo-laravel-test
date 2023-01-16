@@ -15,7 +15,7 @@ class ColumnSeeder extends Seeder
      */
     public function run()
     {
-        Column::factory(5)->hasCards(8)->create();
-        Column::factory(2)->hasCards(4)->create(['deleted_at' => now()]);
+        Column::factory(4)->hasCards(8)->create();
+        Column::factory(1)->hasCards(2)->create(['deleted_at' => now()]);
     }
 }
