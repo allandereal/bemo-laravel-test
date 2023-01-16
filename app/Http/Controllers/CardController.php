@@ -19,7 +19,7 @@ class CardController extends Controller
     public function index(Request $request)
     {
         //TODO: add filters
-        return CardResource::collection(Card::all());
+        return CardResource::collection(Card::withTrashed()->get());
     }
 
     /**
