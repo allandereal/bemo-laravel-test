@@ -11,6 +11,13 @@ class Card extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'title',
+        'column_id',
+        'description',
+        'position'
+    ];
+
     public function column(): belongsTo
     {
         return $this->belongsTo(Column::class);

@@ -11,9 +11,11 @@ class Column extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['title'];
+
     public function cards(): hasMany
     {
-        return $this->hasMany(Card::class);
+        return $this->hasMany(Card::class)->orderBy('position');
     }
 
     public function getLastCardPosition(){
