@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColumnRequest;
 use App\Http\Requests\UpdateColumnRequest;
+use App\Http\Resources\ColumnResource;
 use App\Models\Column;
 
 class ColumnController extends Controller
@@ -11,21 +12,11 @@ class ColumnController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ColumnResource::collection(Column::with('cards')->get());
     }
 
     /**
@@ -36,29 +27,9 @@ class ColumnController extends Controller
      */
     public function store(StoreColumnRequest $request)
     {
-        //
-    }
+        $column = Column::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Column $column)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Column $column)
-    {
-        //
+        return new ColumnResource($column);
     }
 
     /**
@@ -81,6 +52,7 @@ class ColumnController extends Controller
      */
     public function destroy(Column $column)
     {
-        //
+        $column->delete();
+        return $column->id;
     }
 }
