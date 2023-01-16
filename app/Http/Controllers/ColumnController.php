@@ -52,7 +52,9 @@ class ColumnController extends Controller
      */
     public function destroy(Column $column)
     {
+        $column->cards()->delete();
         $column->delete();
+
         return $column->id;
     }
 }
